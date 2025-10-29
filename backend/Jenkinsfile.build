@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+
+    environment {
+        APP_NAME = "demo-backend"
+        BACKEND_PATH = "D:\\iris-code\\ci-cd-demo\\backend"
+        ARTIFACT_PATH = "D:\\iris-code\\ci-cd-demo\\artifacts\\backend"
+    }
+
+    stages {
+        stage('Cleanup') {
+            steps {
+                echo "🧹 Cleaning old backend artifacts..."
+                bat "rmdir /s /q \"${ARTIFACT_PATH}\" || exit 0"
+                bat "mkdir \"${ARTIFACT_PATH}\""
+            }
+        }
+
+        stage('Build JAR') {
+            steps {
+                echo "⚙️ Building backend using Maven..."
+                dir("${BACKEND_PATH}") {
+                    bat "mvn clean package -DskipTests"
+                }
+            }
+        }
+
+        stage('Copy Artifact') {
+            steps {
+                echo "📦 Copying JAR to artifacts directory..."
+                bat """
+                    for /r ${BACKEND_PATH}\\target %%f in (*.jar) do (
+                        copy /Y "%%f" "${ARTIFACT_PATH}\\backend.jar"
+                    )
+                """
+            }
+        }
+
+        stage('Verify Artifact') {
+            steps {
+                echo "🔍 Listing artifact contents..."
+                bat "dir \"${ARTIFACT_PATH}\""
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ Backend build successful. Artifact stored in: ${ARTIFACT_PATH}"
+        }
+        failure {
+            echo "❌ Backend build failed. Check logs."
+        }
+    }
+}

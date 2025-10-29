@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    image: demo-backend:${BUILD_ID:-latest}
+    container_name: demo-backend
+    expose:
+      - "8181"  # only exposed to internal network
+    networks:
+      - demo-net
+
+  frontend:
+    image: demo-frontend:${BUILD_ID:-latest}
+    container_name: demo-frontend
+    ports:
+      - "80:80"  # only this one visible to host
+    networks:
+      - demo-net
+
+networks:
+  demo-net:
+    driver: bridge

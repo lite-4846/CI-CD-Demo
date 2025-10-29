@@ -1,0 +1,7 @@
+
+D:\iris-code\ci-cd-demo\angular>pnpm run build 
+
+> angular@0.0.0 build D:\iris-code\ci-cd-demo\angular
+> ng build
+
+[33m❯[39m Building...

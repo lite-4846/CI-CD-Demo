@@ -1,0 +1,51 @@
+<div class="max-w-2xl mx-auto p-6">
+  <!-- Add User Form -->
+  <form
+    class="bg-white shadow-md rounded-2xl p-4 mb-6 space-y-4 border"
+    (ngSubmit)="addUser()"
+  >
+    <h2 class="text-xl font-semibold mb-2">Add New User</h2>
+    <div class="flex flex-col space-y-3">
+      <input
+        type="text"
+        placeholder="Name"
+        [(ngModel)]="newUser().name"
+        name="name"
+        required
+        class="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        [(ngModel)]="newUser().email"
+        name="email"
+        required
+        class="border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <button
+        type="submit"
+        class="bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+      >
+        Add User
+      </button>
+    </div>
+  </form>
+
+  <!-- Users List -->
+  <div class="bg-white shadow-md rounded-2xl border">
+    <h2 class="text-xl font-semibold p-4 border-b">User List</h2>
+    <ul>
+      @for (user of users(); track user.id) {
+        <li
+          class="p-4 border-b last:border-b-0 flex justify-between items-center"
+        >
+          <div>
+            <p class="font-medium">{{ user.name }}</p>
+            <p class="text-gray-600 text-sm">{{ user.email }}</p>
+          </div>
+          <span class="text-gray-400 text-sm">#{{ user.id }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+</div>
