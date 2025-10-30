@@ -1,7 +1,0 @@
-D:\iris-code\ci-cd-demo\backend\src\main\java\com\demo\api\model\User.java
-D:\iris-code\ci-cd-demo\backend\src\main\java\com\demo\api\controller\UserController.java
-D:\iris-code\ci-cd-demo\backend\src\main\java\com\demo\api\config\CorsConfig.java
-D:\iris-code\ci-cd-demo\backend\src\main\java\com\demo\api\service\UserService.java
-D:\iris-code\ci-cd-demo\backend\src\main\java\com\demo\api\repository\UserRepository.java
-D:\iris-code\ci-cd-demo\backend\src\main\java\com\demo\api\DemoApiApplication.java
-D:\iris-code\ci-cd-demo\backend\src\main\java\com\demo\api\dto\UserDTO.java

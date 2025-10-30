@@ -1,12 +1,11 @@
 FROM nginx:alpine
 
-# Remove default nginx page
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copy built Angular artifacts
-COPY ./artifacts/frontend/angular/browser /usr/share/nginx/html
+# Copy Angular build
+COPY ./artifacts/frontend/demo /demo/angular/dist/demo
 
-# Copy custom Nginx config
+# Copy Nginx config
 COPY default.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
