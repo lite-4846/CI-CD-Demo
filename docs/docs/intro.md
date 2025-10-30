@@ -1,47 +1,66 @@
 ---
+title: Introduction to IRIS-Instant
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# 🧭 Introduction to IRIS-Instant
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Welcome to the official **IRIS-Instant Documentation**.  
+This guide serves as a complete reference for developers, DevOps engineers, and contributors working on the IRIS-Instant platform.
 
-## Getting Started
+---
 
-Get started by **creating a new site**.
+## 🚀 What is IRIS-Instant?
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+**IRIS-Instant** is an enterprise-grade web platform designed for modular scalability and seamless integration across frontend, backend, and DevOps workflows.
 
-### What you'll need
+The system is built with:
+- **Frontend:** Angular 17+
+- **Backend:** Spring Boot (Java)
+- **Database:** PostgreSQL
+- **Deployment & Automation:** Docker + Jenkins
 
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+The project is structured to ensure rapid development, automated builds, and smooth CI/CD operations.
 
-## Generate a new site
+---
 
-Generate a new Docusaurus site using the **classic template**.
+## 📚 What This Documentation Covers
 
-The classic template will automatically be added to your project after you run the command:
+The documentation is organized into multiple domains, each targeting a key area of the IRIS-Instant ecosystem:
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+| Section | Description |
+|----------|--------------|
+| **CI/CD** | Docker, Jenkins, and full automation pipeline setup. |
+| **Architecture** | High-level overview of system design, modules, and integrations. |
+| **Setup** | Environment preparation, prerequisites, and dependency setup. |
+| **Demo** | Step-by-step guide to replicate the Angular + SpringBoot + Postgres CI/CD flow. |
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+> For now, our main focus is **CI/CD** — the backbone of automated delivery for IRIS-Instant.
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+---
 
-## Start your site
+## 🧩 Project Goals
 
-Run the development server:
+- Establish **a reliable and reusable CI/CD pipeline** using Jenkins and Docker.  
+- Simplify **local development setup** through containerization.  
+- Ensure **consistent deployment flow** across environments.  
+- Document **every step** clearly for easy onboarding and team collaboration.
 
-```bash
-cd my-website
-npm run start
-```
+---
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+## 🏁 Get Started
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+If you’re new here, start with the CI/CD overview:
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+👉 [Get Started with CI/CD](cicd/intro)
+
+---
+
+## 🛠️ Contributing
+
+Contributions are welcome.  
+You can suggest improvements, report bugs, or enhance existing documentation as the project evolves.
+
+---
+
+© IRIS-Instant — Built for reliability and speed.
