@@ -54,17 +54,17 @@ export default function Home(): ReactNode {
             <Feature
               title="Docker"
               description="Understand containerization and how IRIS-Instant leverages Docker for isolated builds."
-              link="/docs/ci-cd/docker/intro"
+              link="/cicd/docker/intro"
             />
             <Feature
               title="Jenkins"
               description="Learn to automate builds and deployments with Jenkins pipelines integrated with Docker."
-              link="/docs/ci-cd/jenkins/intro"
+              link="/cicd/jenkins/overview"
             />
             <Feature
               title="Demo Setup"
               description="Step-by-step local setup for Angular + Spring Boot + PostgreSQL using Docker & Jenkins."
-              link="/docs/ci-cd/demo/setup"
+              link="/cicd/demo/overview"
             />
           </div>
         </section>

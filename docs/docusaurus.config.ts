@@ -3,20 +3,20 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'IRIS-Instant Docs',
+  title: 'DevOps Docs',
   tagline:
-    'Comprehensive documentation for IRIS-Instant project — from setup to deployment',
+    'Comprehensive documentation for DevOps — from setup to deployment',
   favicon: 'img/favicon.ico',
 
   future: {
     v4: true,
   },
 
-  url: 'https://iris-instant.example.com', // replace when you have production URL
+  url: 'https://devops.example.com', // replace when you have production URL
   baseUrl: '/',
 
   organizationName: 'your-org', // e.g. GitHub org/user
-  projectName: 'iris-instant-docs',
+  projectName: 'devops-docs',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -43,24 +43,18 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/iris-social-card.jpg',
+    image: 'img/social-card.jpg',
     colorMode: {
       respectPrefersColorScheme: true,
       defaultMode: 'light',
     },
     navbar: {
-      title: 'IRIS-Instant',
+      title: 'DevOps',
       logo: {
-        alt: 'IRIS-Instant Logo',
+        alt: 'DevOps Logo',
         src: 'img/logo.svg',
       },
       items: [
-        {
-          type: 'doc',
-          docId: 'iris-instant/overview',
-          position: 'left',
-          label: 'Overview',
-        },
         {
           type: 'doc',
           docId: 'cicd/intro',

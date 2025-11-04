@@ -50,7 +50,7 @@ docker --version
 For detailed step-by-step installation on **Windows**,  
 see the **Jenkins Installation Guide** inside the demo section:
 
-**[Setup → Jenkins → Installing Jenkins](../setup/jenkins/installing-jenkins.md)**
+**[Setup → Jenkins → Installing Jenkins](./setup/02-jenkins-setup.md)**
 
 ---
 

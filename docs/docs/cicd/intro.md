@@ -74,7 +74,7 @@ Our infrastructure uses:
 | Section | Description |
 |----------|--------------|
 | [Docker](docker/intro) | Containerization setup, Dockerfiles, and docker-compose structure. |
-| [Jenkins](jenkins/intro) | Jenkins pipeline, credentials, and job configuration details. |
+| [Jenkins](jenkins/overview) | Jenkins pipeline, credentials, and job configuration details. |
 | [Demo](demo/overview) | Localized version of this setup (Angular + Spring Boot + Postgres) for testing and learning. |
 
 ---

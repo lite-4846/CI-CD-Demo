@@ -1,56 +1,63 @@
 ---
-title: Introduction to IRIS-Instant
+title: Introduction to CI/CD
 sidebar_position: 1
 ---
 
-# 🧭 Introduction to IRIS-Instant
+# 🧭 Introduction to CI/CD
 
-Welcome to the official **IRIS-Instant Documentation**.  
-This guide serves as a complete reference for developers, DevOps engineers, and contributors working on the IRIS-Instant platform.
-
----
-
-## 🚀 What is IRIS-Instant?
-
-**IRIS-Instant** is an enterprise-grade web platform designed for modular scalability and seamless integration across frontend, backend, and DevOps workflows.
-
-The system is built with:
-- **Frontend:** Angular 17+
-- **Backend:** Spring Boot (Java)
-- **Database:** PostgreSQL
-- **Deployment & Automation:** Docker + Jenkins
-
-The project is structured to ensure rapid development, automated builds, and smooth CI/CD operations.
+Welcome to the **Continuous Integration and Continuous Deployment (CI/CD) Documentation**.  
+This guide provides a complete reference for developers, DevOps engineers, and teams implementing automated build and deployment pipelines.
 
 ---
 
-## 📚 What This Documentation Covers
+## 🚀 What is CI/CD?
 
-The documentation is organized into multiple domains, each targeting a key area of the IRIS-Instant ecosystem:
+**CI/CD** is the backbone of modern software delivery — a set of practices and tools that enable:
+- **Continuous Integration:** Automatically building, testing, and validating code with every commit.  
+- **Continuous Deployment:** Delivering tested code to production or staging environments automatically and reliably.
+
+This documentation focuses on creating a **scalable, containerized, and automated pipeline** that accelerates development and ensures deployment consistency.
+
+---
+
+## 🧱 Core Stack
+
+A practical CI/CD setup typically includes:
+
+- **Frontend:** Angular 17+  
+- **Backend:** Spring Boot (Java)  
+- **Database:** PostgreSQL  
+- **Automation & Deployment:** Docker + Jenkins  
+
+These technologies demonstrate a complete pipeline from code commit to deployment, though the concepts apply to any modern tech stack.
+
+---
+
+## 📚 Documentation Overview
 
 | Section | Description |
 |----------|--------------|
-| **CI/CD** | Docker, Jenkins, and full automation pipeline setup. |
-| **Architecture** | High-level overview of system design, modules, and integrations. |
-| **Setup** | Environment preparation, prerequisites, and dependency setup. |
-| **Demo** | Step-by-step guide to replicate the Angular + SpringBoot + Postgres CI/CD flow. |
+| **CI/CD** | Step-by-step setup of Docker, Jenkins, and the full automation pipeline. |
+| **Architecture** | High-level overview of the system design and integration points. |
+| **Setup** | Environment preparation, prerequisites, and dependency configuration. |
+| **Demo** | End-to-end walkthrough of the Angular + Spring Boot + PostgreSQL pipeline. |
 
-> For now, our main focus is **CI/CD** — the backbone of automated delivery for IRIS-Instant.
+> The focus of this documentation is **CI/CD implementation and automation**.
 
 ---
 
-## 🧩 Project Goals
+## 🧩 Goals
 
-- Establish **a reliable and reusable CI/CD pipeline** using Jenkins and Docker.  
-- Simplify **local development setup** through containerization.  
-- Ensure **consistent deployment flow** across environments.  
-- Document **every step** clearly for easy onboarding and team collaboration.
+- Build a **reliable, reusable CI/CD pipeline** using Jenkins and Docker.  
+- Simplify **local and remote deployment** through containerization.  
+- Guarantee **consistency** across all environments.  
+- Provide **clear, step-by-step documentation** for seamless onboarding.
 
 ---
 
 ## 🏁 Get Started
 
-If you’re new here, start with the CI/CD overview:
+Begin with the CI/CD overview to understand the core principles and workflow:
 
 👉 [Get Started with CI/CD](cicd/intro)
 
@@ -59,8 +66,8 @@ If you’re new here, start with the CI/CD overview:
 ## 🛠️ Contributing
 
 Contributions are welcome.  
-You can suggest improvements, report bugs, or enhance existing documentation as the project evolves.
+You can improve, extend, or optimize the pipeline documentation as the project evolves.
 
 ---
 
-© IRIS-Instant — Built for reliability and speed.
+© CI/CD Documentation — Built for automation and reliability.
