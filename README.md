@@ -17,19 +17,19 @@ You’ll find detailed explanations, visuals, and practical exercises to master 
 To start the documentation locally:
 
 1. **Navigate to the `docs` folder**
-   %%%bash
+   ```bash
    cd docs
-   %%%
+   ```
 
 2. **Install dependencies**
-   %%%bash
+   ```bash
    npm install
-   %%%
+   ```
 
 3. **Run the local server**
-   %%%bash
+   ```bash
    npm run start
-   %%%
+   ```
 
 4. Open your browser and go to  
    👉 `http://localhost:3000`
