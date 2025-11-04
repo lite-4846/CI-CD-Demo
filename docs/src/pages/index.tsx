@@ -45,15 +45,15 @@ export default function Home(): ReactNode {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title="IRIS-Instant Docs"
-      description="Comprehensive documentation for IRIS-Instant project — covering setup, architecture, and CI/CD.">
+      title="DevOps Docs"
+      description="Comprehensive documentation for Demo project — covering setup, architecture, and CI/CD.">
       <HomepageHeader />
       <main>
         <section className="container margin-vert--xl">
           <div className="row">
             <Feature
               title="Docker"
-              description="Understand containerization and how IRIS-Instant leverages Docker for isolated builds."
+              description="Understand containerization and how any Project leverages Docker for isolated builds."
               link="/cicd/docker/intro"
             />
             <Feature

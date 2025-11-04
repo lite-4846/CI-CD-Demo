@@ -3,7 +3,7 @@ title: Architecture
 sidebar_position: 2
 ---
 
-The Jenkins setup for IRIS-Instant involves multiple coordinated components:
+The Jenkins setup for Any Project involves multiple coordinated components:
 
 ```plaintext
 +---------------------+

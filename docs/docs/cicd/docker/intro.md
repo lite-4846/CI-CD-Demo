@@ -3,7 +3,7 @@ title: Overview
 sidebar_position: 1
 ---
 
-Docker is the containerization platform used to package and run all IRIS-Instant components.  
+Docker is the containerization platform used to package and run all Application components.  
 Each service (frontend, backend, webform) runs inside its own container built from a Docker image.
 
 ### Why we use Docker
@@ -11,7 +11,7 @@ Each service (frontend, backend, webform) runs inside its own container built fr
 - Simplifies deployments — build once, run anywhere.
 - Makes rollback or scaling simple (just pull a specific image tag).
 
-### How IRIS-Instant uses Docker
+### How Some Project uses Docker
 - **Frontend Image** → contains two Angular applications.
 - **Backend Image** → contains three Spring Boot services.
 - **Webform Image** → managed by another team.

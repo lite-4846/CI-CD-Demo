@@ -3,7 +3,7 @@ title: Overview
 sidebar_position: 1
 ---
 
-Jenkins is the automation server used to build, test, and deploy all IRIS-Instant services.  
+Jenkins is the automation server used to build, test, and deploy all Application services.  
 It pulls the latest code from Git, builds Docker images, and pushes them to AWS ECR for deployment.
 
 ### Why We Use Jenkins

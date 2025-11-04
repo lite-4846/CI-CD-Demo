@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # ⚙️ CI/CD
 
-This section explains how **Jenkins** and **Docker** are integrated in the IRIS-Instant ecosystem to automate build, image creation, and deployment workflows across environments.
+This section explains how **Jenkins** and **Docker** are integrated in the ecosystem to automate build, image creation, and deployment workflows across environments.
 
 ---
 
@@ -79,5 +79,5 @@ Our infrastructure uses:
 
 ---
 
-> This documentation is focused on replicating and understanding the CI/CD layer of IRIS-Instant.  
+> This documentation is focused on replicating and understanding the CI/CD.  
 > All configurations and examples mirror the production setup as closely as possible.
