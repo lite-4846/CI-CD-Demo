@@ -37,29 +37,29 @@ pipeline {
             }
         }
 
-        stage('Prepare Deployment Files') {
-            steps {
-                echo "Copying deployment files (.env and docker-compose.yml)..."
-                sh '''
-                if [ -d "${DEPLOY_PATH}" ]; then
-                    echo "Copying files to ${DEPLOY_PATH}"
-                    cp -f docker-compose.yml ${DEPLOY_PATH}/
-                    cp -f .env ${DEPLOY_PATH}/
-                else
-                    echo "❌ Deployment path not found: ${DEPLOY_PATH}"
-                    exit 1
-                fi
-                '''
-            }
-        }
+        // stage('Prepare Deployment Files') {
+        //     steps {
+        //         echo "Copying deployment files (.env and docker-compose.yml)..."
+        //         sh '''
+        //         if [ -d "${DEPLOY_PATH}" ]; then
+        //             echo "Copying files to ${DEPLOY_PATH}"
+        //             cp -f docker-compose.yml ${DEPLOY_PATH}/
+        //             cp -f .env ${DEPLOY_PATH}/
+        //         else
+        //             echo "❌ Deployment path not found: ${DEPLOY_PATH}"
+        //             exit 1
+        //         fi
+        //         '''
+        //     }
+        // }
 
         stage('Deploy Updated Containers') {
             steps {
                 echo "Deploying new containers using docker-compose..."
                 sh '''
-                cd ${DEPLOY_PATH}
+                // cd ${DEPLOY_PATH}
                 docker compose down
-                docker compose up -d --build
+                docker compose up -d
                 '''
             }
         }

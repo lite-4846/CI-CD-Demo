@@ -24,8 +24,8 @@ pipeline {
                 sh '''
                 cd backend
                 mvn clean package -DskipTests
-                mkdir -p ../artifacts/backend
-                cp target/*.jar ../artifacts/backend/backend.jar
+                mkdir -p artifacts/backend
+                cp target/*.jar artifacts/backend/backend.jar
                 '''
             }
         }
