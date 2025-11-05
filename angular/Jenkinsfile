@@ -1,0 +1,67 @@
+pipeline {
+    agent any
+
+    environment {
+        APP_NAME = "demo-frontend"
+        DOCKERFILE_PATH = "frontend/Dockerfile.frontend"
+        CONTEXT_PATH = "."
+        ARTIFACTS_DIR = "artifacts/frontend"
+        IMAGE_TAG = "${BUILD_ID}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo "Checking out source code..."
+                checkout scm
+            }
+        }
+
+        stage('Install Node & Dependencies') {
+            steps {
+                echo "Installing dependencies..."
+                sh '''
+                npm install -g @angular/cli
+                cd frontend && npm ci
+                '''
+            }
+        }
+
+        stage('Build Angular') {
+            steps {
+                echo "Building Angular app..."
+                sh '''
+                cd frontend
+                npm run build
+                mkdir -p ../artifacts/frontend
+                cp -r dist/demo/* ../artifacts/frontend/
+                '''
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                echo "Building Docker image for frontend..."
+                sh '''
+                docker build -t ${APP_NAME}:${IMAGE_TAG} -f ${DOCKERFILE_PATH} ${CONTEXT_PATH}
+                '''
+            }
+        }
+
+        stage('Verify Image') {
+            steps {
+                echo "Listing Docker images..."
+                sh "docker images | grep ${APP_NAME}"
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ Frontend image built successfully: ${APP_NAME}:${IMAGE_TAG}"
+        }
+        failure {
+            echo "❌ Frontend image build failed."
+        }
+    }
+}

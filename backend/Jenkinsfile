@@ -1,0 +1,57 @@
+pipeline {
+    agent any
+
+    environment {
+        APP_NAME = "demo-backend"
+        DOCKERFILE_PATH = "backend/Dockerfile.backend"
+        CONTEXT_PATH = "."
+        ARTIFACTS_DIR = "artifacts/backend"
+        IMAGE_TAG = "${BUILD_ID}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo "Checking out source code..."
+                checkout scm
+            }
+        }
+
+        stage('Build Backend JAR') {
+            steps {
+                echo "Building Spring Boot JAR..."
+                sh '''
+                cd backend
+                mvn clean package -DskipTests
+                mkdir -p ../artifacts/backend
+                cp target/*.jar ../artifacts/backend/backend.jar
+                '''
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                echo "Building Docker image for backend..."
+                sh '''
+                docker build -t ${APP_NAME}:${IMAGE_TAG} -f ${DOCKERFILE_PATH} ${CONTEXT_PATH}
+                '''
+            }
+        }
+
+        stage('Verify Image') {
+            steps {
+                echo "Listing Docker images..."
+                sh "docker images | grep ${APP_NAME}"
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ Backend image built successfully: ${APP_NAME}:${IMAGE_TAG}"
+        }
+        failure {
+            echo "❌ Backend image build failed."
+        }
+    }
+}
