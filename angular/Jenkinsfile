@@ -32,8 +32,8 @@ pipeline {
                 sh '''
                 cd angular
                 pnpm run build
-                mkdir -p ../artifacts/frontend
-                cp -r dist/demo/* ../artifacts/frontend/
+                mkdir -p artifacts/frontend
+                cp -r dist/demo artifacts/frontend/demo
                 '''
             }
         }
