@@ -21,7 +21,7 @@ pipeline {
             steps {
                 echo "Installing dependencies..."
                 sh '''
-                cd angular && npm ci
+                cd angular && pnpm install --frozen-lockfile || pnpm install
                 '''
             }
         }
@@ -31,7 +31,7 @@ pipeline {
                 echo "Building Angular app..."
                 sh '''
                 cd angular
-                npm run build
+                pnpm run build
                 mkdir -p ../artifacts/frontend
                 cp -r dist/demo/* ../artifacts/frontend/
                 '''
