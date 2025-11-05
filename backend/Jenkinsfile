@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     environment {
+        JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-17.0.17.0.10-1.el8.x86_64'
         APP_NAME = "demo-backend"
         DOCKERFILE_PATH = "backend/Dockerfile.backend"
         CONTEXT_PATH = "."
