@@ -21,7 +21,6 @@ pipeline {
             steps {
                 echo "Installing dependencies..."
                 sh '''
-                npm install -g @angular/cli
                 cd frontend && npm ci
                 '''
             }
