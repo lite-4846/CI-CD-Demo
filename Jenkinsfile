@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        FRONTEND_JOB = "frontend-build"
-        BACKEND_JOB = "backend-build"
+        FRONTEND_JOB = "frontend-pipeline"
+        BACKEND_JOB = "backend-pipeline"
         DEPLOY_PATH = "/home/irisdev"
     }
 
