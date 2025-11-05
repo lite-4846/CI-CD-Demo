@@ -2,10 +2,9 @@ pipeline {
     agent any
 
     environment {
-        FRONTEND_JOB = "frontend-pipeline"
-        BACKEND_JOB = "backend-pipeline"
+        FRONTEND_JOB = "frontend-build"
+        BACKEND_JOB = "backend-build"
         DEPLOY_PATH = "/home/irisdev"
-        REPO_URL = "https://github.com/lite-4846/CI-CD-Demo.git"
     }
 
     triggers {
@@ -14,29 +13,28 @@ pipeline {
     }
 
     stages {
-        stage('Check for Changes') {
+        stage('Checkout Repository') {
             steps {
-                echo "Checking for new commits in repo..."
+                echo "Checking for new commits in repository..."
                 checkout scm
-                script {
-                    echo "Changes detected, proceeding with pipeline."
-                }
             }
         }
 
         stage('Trigger Frontend & Backend Builds') {
-          stage('Frontend Build') {
-              steps {
-                  echo "Triggering frontend pipeline..."
-                  build job: "${FRONTEND_JOB}", propagate: true, wait: true
-              }
-          }
-          stage('Backend Build') {
-              steps {
-                  echo "Triggering backend pipeline..."
-                  build job: "${BACKEND_JOB}", propagate: true, wait: true
-              }
-          }
+            parallel {
+                stage('Frontend Build') {
+                    steps {
+                        echo "Triggering frontend pipeline..."
+                        build job: "${FRONTEND_JOB}", propagate: true, wait: true
+                    }
+                }
+                stage('Backend Build') {
+                    steps {
+                        echo "Triggering backend pipeline..."
+                        build job: "${BACKEND_JOB}", propagate: true, wait: true
+                    }
+                }
+            }
         }
 
         stage('Prepare Deployment Files') {
