@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         APP_NAME = "demo-frontend"
-        DOCKERFILE_PATH = "frontend/Dockerfile.frontend"
+        DOCKERFILE_PATH = "angular/Dockerfile.frontend"
         CONTEXT_PATH = "."
         ARTIFACTS_DIR = "artifacts/frontend"
         IMAGE_TAG = "${BUILD_ID}"
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 echo "Installing dependencies..."
                 sh '''
-                cd frontend && npm ci
+                cd angular && npm ci
                 '''
             }
         }
@@ -30,7 +30,7 @@ pipeline {
             steps {
                 echo "Building Angular app..."
                 sh '''
-                cd frontend
+                cd angular
                 npm run build
                 mkdir -p ../artifacts/frontend
                 cp -r dist/demo/* ../artifacts/frontend/
