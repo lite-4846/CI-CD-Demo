@@ -42,7 +42,6 @@ function Feature({ title, description, link }: { title: string; description: str
 }
 
 export default function Home(): ReactNode {
-  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
       title="DevOps Docs"
