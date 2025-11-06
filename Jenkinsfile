@@ -40,16 +40,20 @@ pipeline {
 
         stage('Prepare Deployment Files') {
             steps {
-                echo "Copying deployment files (.env and docker-compose.yml)..."
+                echo "Updating deployment environment..."
                 sh '''
-                  echo "Copying files to ${DEPLOY_PATH}"
+                  echo "Preparing deployment files in ${DEPLOY_PATH}"
 
-                  echo "IMAGE_TAG=${BUILD_TAG}" > build_info.env
-                  echo "BUILD_TIME=$(date '+%Y-%m-%d_%H-%M-%S')" >> build_info.env
+                  # Update .env with new image tag and timestamp
+                  sed -i '/^IMAGE_TAG=/d' .env || true
+                  echo "IMAGE_TAG=${BUILD_TAG}" >> .env
 
+                  sed -i '/^BUILD_TIME=/d' .env || true
+                  echo "BUILD_TIME=$(date '+%Y-%m-%d_%H-%M-%S')" >> .env
+
+                  # Copy required files
                   cp -f docker-compose.yml ${DEPLOY_PATH}/
                   cp -f .env ${DEPLOY_PATH}/
-                  cp -f build_info.env ${DEPLOY_PATH}/
                 '''
             }
         }

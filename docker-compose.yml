@@ -6,7 +6,6 @@ services:
     container_name: demo-backend
     env_file:
       - .env
-      - build_info.env
     expose:
       - "8181"  # only exposed to internal network
     networks:
@@ -17,8 +16,6 @@ services:
     container_name: demo-frontend
     ports:
       - "80:80"  # only this one visible to host
-    env_file:
-      - build_info.env
     networks:
       - demo-net
 
