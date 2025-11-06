@@ -57,7 +57,6 @@ pipeline {
             steps {
                 echo "Deploying new containers using docker-compose..."
                 sh '''
-                // cd ${DEPLOY_PATH}
                 docker compose down
                 docker compose up -d
                 '''
