@@ -3,7 +3,6 @@ version: '3.8'
 services:
   postgres:
     image: postgres:15-alpine
-    container_name: demo-postgres
     environment:
       POSTGRES_DB: demo_db
       POSTGRES_USER: postgres
@@ -20,7 +19,6 @@ services:
 
   backend:
     image: demo-backend:${IMAGE_TAG}
-    container_name: demo-backend
     env_file:
       - .env
     depends_on:
@@ -33,7 +31,6 @@ services:
 
   frontend:
     image: demo-frontend:${IMAGE_TAG}
-    container_name: demo-frontend
     ports:
       - "80:80"
     networks:
