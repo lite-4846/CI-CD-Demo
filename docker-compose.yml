@@ -1,13 +1,33 @@
 version: '3.8'
 
 services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: demo-postgres
+    environment:
+      POSTGRES_DB: demo_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: superman
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - demo-net
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   backend:
     image: demo-backend:${IMAGE_TAG}
     container_name: demo-backend
     env_file:
       - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
     expose:
-      - "8181"  # only exposed to internal network
+      - "8181"
     networks:
       - demo-net
 
@@ -15,9 +35,12 @@ services:
     image: demo-frontend:${IMAGE_TAG}
     container_name: demo-frontend
     ports:
-      - "80:80"  # only this one visible to host
+      - "80:80"
     networks:
       - demo-net
+
+volumes:
+  postgres_data:
 
 networks:
   demo-net:
