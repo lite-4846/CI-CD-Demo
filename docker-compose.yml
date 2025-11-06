@@ -2,20 +2,23 @@ version: '3.8'
 
 services:
   backend:
-    image: demo-backend:${BACKEND_TAG}
+    image: demo-backend:${IMAGE_TAG}
     container_name: demo-backend
     env_file:
       - .env
+      - build_info.env
     expose:
       - "8181"  # only exposed to internal network
     networks:
       - demo-net
 
   frontend:
-    image: demo-frontend:${FRONTEND_TAG}
+    image: demo-frontend:${IMAGE_TAG}
     container_name: demo-frontend
     ports:
       - "80:80"  # only this one visible to host
+    env_file:
+      - build_info.env
     networks:
       - demo-net
 

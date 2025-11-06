@@ -6,8 +6,6 @@ pipeline {
         BACKEND_JOB = "backend-pipeline"
         DEPLOY_PATH = "/home/irisdev"
         BUILD_TAG = "build-${BUILD_NUMBER}"
-        FRONTEND_TAG = "build-${BUILD_NUMBER}"
-        BACKEND_TAG  = "build-${BUILD_NUMBER}"
     }
 
     triggers {
@@ -44,14 +42,14 @@ pipeline {
             steps {
                 echo "Copying deployment files (.env and docker-compose.yml)..."
                 sh '''
-                if [ -d "${DEPLOY_PATH}" ]; then
-                    echo "Copying files to ${DEPLOY_PATH}"
-                    cp -f docker-compose.yml ${DEPLOY_PATH}/
-                    cp -f .env ${DEPLOY_PATH}/
-                else
-                    echo "❌ Deployment path not found: ${DEPLOY_PATH}"
-                    exit 1
-                fi
+                  echo "Copying files to ${DEPLOY_PATH}"
+
+                  echo "IMAGE_TAG=${BUILD_TAG}" > build_info.env
+                  echo "BUILD_TIME=$(date '+%Y-%m-%d_%H-%M-%S')" >> build_info.env
+
+                  cp -f docker-compose.yml ${DEPLOY_PATH}/
+                  cp -f .env ${DEPLOY_PATH}/
+                  cp -f build_info.env ${DEPLOY_PATH}/
                 '''
             }
         }
@@ -60,9 +58,6 @@ pipeline {
             steps {
                 echo "Deploying new containers using docker-compose..."
                 sh '''
-                export FRONTEND_TAG=${FRONTEND_TAG}
-                export BACKEND_TAG=${BACKEND_TAG}
-
                 docker compose down
                 docker compose up -d
                 '''
