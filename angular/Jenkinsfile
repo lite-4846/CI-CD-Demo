@@ -1,12 +1,15 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'Docker image tag to build')
+    }
+
     environment {
         APP_NAME = "demo-frontend"
         DOCKERFILE_PATH = "angular/Dockerfile.frontend"
         CONTEXT_PATH = "."
         ARTIFACTS_DIR = "artifacts/frontend"
-        IMAGE_TAG = "${BUILD_ID}"
     }
 
     stages {
@@ -43,7 +46,7 @@ pipeline {
             steps {
                 echo "Building Docker image for frontend..."
                 sh '''
-                docker build -t ${APP_NAME}:${IMAGE_TAG} -f ${DOCKERFILE_PATH} ${CONTEXT_PATH}
+                docker build -t ${APP_NAME}:${IMAGE_TAG} -t ${APP_NAME}:${BUILD_ID} -f ${DOCKERFILE_PATH} ${CONTEXT_PATH}
                 '''
             }
         }

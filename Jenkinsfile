@@ -5,6 +5,7 @@ pipeline {
         FRONTEND_JOB = "frontend-pipeline"
         BACKEND_JOB = "backend-pipeline"
         DEPLOY_PATH = "/home/irisdev"
+        BUILD_TAG = "build-${BUILD_NUMBER}"
     }
 
     triggers {
@@ -25,33 +26,33 @@ pipeline {
                 stage('Frontend Build') {
                     steps {
                         echo "Triggering frontend pipeline..."
-                        build job: "${FRONTEND_JOB}", propagate: true, wait: true
+                        build job: "${FRONTEND_JOB}", propagate: true, wait: true, parameters: [string(name: 'IMAGE_TAG', value: "${BUILD_TAG}")]
                     }
                 }
                 stage('Backend Build') {
                     steps {
                         echo "Triggering backend pipeline..."
-                        build job: "${BACKEND_JOB}", propagate: true, wait: true
+                        build job: "${BACKEND_JOB}", propagate: true, wait: true, parameters: [string(name: 'IMAGE_TAG', value: "${BUILD_TAG}")]
                     }
                 }
             }
         }
 
-        // stage('Prepare Deployment Files') {
-        //     steps {
-        //         echo "Copying deployment files (.env and docker-compose.yml)..."
-        //         sh '''
-        //         if [ -d "${DEPLOY_PATH}" ]; then
-        //             echo "Copying files to ${DEPLOY_PATH}"
-        //             cp -f docker-compose.yml ${DEPLOY_PATH}/
-        //             cp -f .env ${DEPLOY_PATH}/
-        //         else
-        //             echo "❌ Deployment path not found: ${DEPLOY_PATH}"
-        //             exit 1
-        //         fi
-        //         '''
-        //     }
-        // }
+        stage('Prepare Deployment Files') {
+            steps {
+                echo "Copying deployment files (.env and docker-compose.yml)..."
+                sh '''
+                if [ -d "${DEPLOY_PATH}" ]; then
+                    echo "Copying files to ${DEPLOY_PATH}"
+                    cp -f docker-compose.yml ${DEPLOY_PATH}/
+                    cp -f .env ${DEPLOY_PATH}/
+                else
+                    echo "❌ Deployment path not found: ${DEPLOY_PATH}"
+                    exit 1
+                fi
+                '''
+            }
+        }
 
         stage('Deploy Updated Containers') {
             steps {

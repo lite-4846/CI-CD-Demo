@@ -1,13 +1,16 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'Docker image tag to build')
+    }
+
     environment {
         JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-17.0.17.0.10-1.el8.x86_64'
         APP_NAME = "demo-backend"
         DOCKERFILE_PATH = "backend/Dockerfile.backend"
         CONTEXT_PATH = "."
         ARTIFACTS_DIR = "artifacts/backend"
-        IMAGE_TAG = "${BUILD_ID}"
     }
 
     stages {
@@ -34,7 +37,7 @@ pipeline {
             steps {
                 echo "Building Docker image for backend..."
                 sh '''
-                docker build -t ${APP_NAME}:${IMAGE_TAG} -f ${DOCKERFILE_PATH} ${CONTEXT_PATH}
+                docker build -t ${APP_NAME}:${IMAGE_TAG} -t ${APP_NAME}:${BUILD_ID} -f ${DOCKERFILE_PATH} ${CONTEXT_PATH}
                 '''
             }
         }
