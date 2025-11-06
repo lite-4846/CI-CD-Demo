@@ -6,6 +6,8 @@ pipeline {
         BACKEND_JOB = "backend-pipeline"
         DEPLOY_PATH = "/home/irisdev"
         BUILD_TAG = "build-${BUILD_NUMBER}"
+        FRONTEND_TAG = "build-${BUILD_NUMBER}"
+        BACKEND_TAG  = "build-${BUILD_NUMBER}"
     }
 
     triggers {
@@ -58,6 +60,9 @@ pipeline {
             steps {
                 echo "Deploying new containers using docker-compose..."
                 sh '''
+                export FRONTEND_TAG=${FRONTEND_TAG}
+                export BACKEND_TAG=${BACKEND_TAG}
+
                 docker compose down
                 docker compose up -d
                 '''
