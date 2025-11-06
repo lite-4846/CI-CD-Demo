@@ -39,24 +39,24 @@ pipeline {
         }
 
         stage('Prepare Deployment Files') {
-            steps {
-                echo "Updating deployment environment..."
-                sh '''
-                  echo "Preparing deployment files in ${DEPLOY_PATH}"
+			steps {
+				echo "Updating deployment environment..."
+				sh '''
+				echo "Preparing deployment files in ${DEPLOY_PATH}"
 
-                  # Update .env with new image tag and timestamp
-                  sed -i '/^IMAGE_TAG=/d' .env || true
-                  echo "IMAGE_TAG=${BUILD_TAG}" >> .env
+				# Update .env in deployment path, not in source
+				sed -i '/^IMAGE_TAG=/d' ${DEPLOY_PATH}/.env || true
+				sed -i '/^BUILD_TIME=/d' ${DEPLOY_PATH}/.env || true
+				
+				echo "" >> ${DEPLOY_PATH}/.env
+				echo "IMAGE_TAG=${BUILD_TAG}" >> ${DEPLOY_PATH}/.env
+				echo "BUILD_TIME=$(date '+%Y-%m-%d_%H-%M-%S')" >> ${DEPLOY_PATH}/.env
 
-                  sed -i '/^BUILD_TIME=/d' .env || true
-                  echo "BUILD_TIME=$(date '+%Y-%m-%d_%H-%M-%S')" >> .env
-
-                  # Copy required files
-                  cp -f docker-compose.yml ${DEPLOY_PATH}/
-                  cp -f .env ${DEPLOY_PATH}/
-                '''
-            }
-        }
+				# Copy docker-compose file only
+				cp -f docker-compose.yml ${DEPLOY_PATH}/
+				'''
+			}
+		}
 
         stage('Deploy Updated Containers') {
             steps {
