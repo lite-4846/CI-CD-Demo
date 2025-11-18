@@ -39,7 +39,7 @@ Follow these steps to set up the project and view the documentation locally.
 
 3.  **Clone the repository** into the `iris-code` folder. This will create a new folder named `CI-CD-Demo` inside `iris-code`.
     ```bash
-    git clone [https://github.com/lite-4846/CI-CD-Demo.git](https://github.com/lite-4846/CI-CD-Demo.git)
+    git clone https://github.com/lite-4846/CI-CD-Demo.git
     ```
 
 ### Step 2: Open the Project in VS Code
