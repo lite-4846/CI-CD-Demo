@@ -6,6 +6,8 @@ sidebar_position: 2
 This section explains the **folder layout** of the demo repository, giving you clarity on what each folder and file represents.  
 While the core focus of this documentation is **CI/CD setup**, not the application code, understanding the structure will help you follow the Jenkins and Docker steps later.
 
+EDIT : This structure is changed a little bit after adding support for Linux Setup with Full CI/CD Automation.
+
 ---
 
 ### High-Level Layout

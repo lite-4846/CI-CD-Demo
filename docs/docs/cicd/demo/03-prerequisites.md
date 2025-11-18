@@ -59,7 +59,7 @@ see the **Jenkins Installation Guide** inside the demo section:
 You can either:
 1. **Clone the repository** from your version control system (if available)
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/lite-4846/CI-CD-Demo.git
    ```
 2. Or, **Download and extract** the ZIP provided by the project maintainer.  
    The extracted folder will contain both the `angular/` and `backend/` applications, along with Docker and Jenkins files.
